@@ -1,0 +1,18 @@
+Package: CopyhelpeR
+Type: Package
+Title: Helper files for CopywriteR
+Version: 0.99.2
+Date: 2015-02-18
+Author: Thomas Kuilman
+Maintainer: Thomas Kuilman <t.kuilman@nki.nl>
+Depends: R(>= 2.10)
+Suggests: BiocStyle
+Description: This package contains the helper files that are required
+        to run the Bioconductor package CopywriteR. It contains
+        pre-assembled 1kb bin GC-content and mappability files for the
+        reference genomes hg18, hg19, hg38, mm9 and mm10. In addition,
+        it contains a blacklist filter to remove regions that display
+        CNV. Files are stored as GRanges objects from the GenomicRanges
+        Bioconductor package.
+License: GPL-2
+biocViews: Homo_sapiens, GenomicSequence

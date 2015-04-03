@@ -1,0 +1,75 @@
+%\VignetteIndexEntry{CopyhelpeR}
+%\VignetteDepends{CopyhelpeR}
+%\VignettePackage{CopyhelpeR}
+%\VignetteEngine{utils::Sweave}
+
+\documentclass{article}
+
+<<style-Sweave, eval=TRUE, echo=FALSE, results=tex>>=
+BiocStyle::latex()
+@
+
+\newcommand{\exitem}[3]{%
+    \item \texttt{\textbackslash#1\{#2\}} #3 \csname#1\endcsname{#2}.%
+}
+
+\title{\bf CopyhelpeR: Helper files for CopywriteR.}
+\author{Thomas Kuilman}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+    Department of Molecular Oncology \\*
+    Netherlands Cancer Institute \\*
+    The Netherlands \\*
+\end{center}
+
+\begin{center}
+    \email{t.kuilman@nki.nl} or \email{thomaskuilman@yahoo.com}
+\end{center}
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Usage}
+
+To get the full path to the helper files folder for the relevant reference
+genomes (hg18, hg19, hg38, mm9 or mm10), use the \Rcode{loadHelperFile()}
+function:
+
+<<getPathHelperFiles, print=FALSE, eval=TRUE, results=hide>>=
+library(CopyhelpeR)
+getPathHelperFiles("hg19")
+@
+<<getPathHelperFiles2, print=FALSE, eval=TRUE, echo=FALSE>>=
+cat(CopyhelpeR:::.wrap(getPathHelperFiles("hg19")))
+@
+
+The helper files are provided as annotation data for the \Biocpkg{CopywriteR}
+package, which uses off-target reads from targeted sequencing for copy number
+detection. The helper files contain pre-assembled 1kb bin GC-content and
+mappability files for the reference genomes hg18, hg19, hg38, mm9 and mm10. In
+addition, it contains a blacklist filter to remove regions that display CNV.
+Files in the returned folder are stored as GRanges objects from the
+\Biocpkg{GenomicRanges} package.
+
+The GC-content data were obtained using 'bedtools nuc'
+(\url{http://bedtools.readthedocs.org/en/latest/content/tools/nuc.html}). Only
+relevant columns were saved in the GC.mappa.grange GRanges object.
+
+The mappability data were obtained by aligning all possible 51 base pair genomic
+fragments using BWA (\url{http://bio-bwa.sourceforge.net/}). The mappability of
+every fragment was binarized, and the mappability of a specific region is taken
+as the average mappability of all fragments that fall into this region.
+
+The regions of copy number variation (CNV) were obtained from the
+'wgEncodeDacMapabilityConsensusExcludable.bed.gz' and the
+'wgEncodeDukeMapabilityRegionsExcludable.bed.gz' files from the ENCODE project
+(\url{http://hgdownload.cse.ucsc.edu/goldenpath/hg19/encodeDCC/wgEncodeMapability/}).
+Blacklisted regions were merged using 'bedtools merge'
+(\url{http://bedtools.readthedocs.org/en/latest/content/tools/merge.html}).
+
+\end{document}
