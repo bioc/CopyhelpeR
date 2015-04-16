@@ -1,7 +1,7 @@
 Package: CopyhelpeR
 Type: Package
 Title: Helper files for CopywriteR
-Version: 1.0.0
+Version: 1.1.0
 Date: 2015-02-18
 Author: Thomas Kuilman
 Maintainer: Thomas Kuilman <t.kuilman@nki.nl>
