@@ -1,10 +1,10 @@
 Package: CopyhelpeR
 Type: Package
 Title: Helper files for CopywriteR
-Version: 1.13.0
+Version: 1.14.0
 Date: 2015-02-18
 Author: Thomas Kuilman
-Maintainer: Thomas Kuilman <t.kuilman@nki.nl>
+Maintainer: Oscar Krijgsman <o.krijgsman@nki.nl>
 Depends: R(>= 2.10)
 Suggests: BiocStyle
 Description: This package contains the helper files that are required
