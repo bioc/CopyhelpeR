@@ -1,7 +1,7 @@
 Package: CopyhelpeR
 Type: Package
 Title: Helper files for CopywriteR
-Version: 1.35.0
+Version: 1.36.0
 Date: 2021-11-21
 Author: Thomas Kuilman
 Maintainer: Oscar Krijgsman <o.krijgsman@nki.nl>
